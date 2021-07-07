@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    t=int(input())
+    m=input()
+    n=m.count('0')
+    if n==1:
+        print("BOB")
+    elif n==2:
+        print("BOB")
+    elif n%2==1:
+        print("ALICE")
+    else:
+        print("BOB")

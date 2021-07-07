@@ -1,0 +1,16 @@
+n,k,x=map(int,input().split())
+arr=list(map(int,input().split()))
+arr.sort()
+d=[]
+for i in range(n-1):
+    if(arr[i+1]-arr[i]>x):
+        d.append((arr[i+1]-arr[i]-1)//x)
+d.sort()
+d.reverse()
+while(d):
+    if(d[-1]<=k):
+        k-=d[-1]
+        d.pop()
+    else:
+        break
+print(len(d)+1)
