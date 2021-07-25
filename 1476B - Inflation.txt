@@ -1,0 +1,26 @@
+import math
+t=int(input())
+while t>0:
+  t-=1
+  n,k=map(int,input().split())
+  # print(n,k)
+  a=list(map(int,input().strip().split()))
+  s=a[0]
+  re=0
+  for i in range(1,n):
+    
+    
+    per=(k*s)/100
+    # print(per)
+    if(per<a[i]):
+      x=(a[i]*100)/k-s
+      # print(x)
+      x=math.ceil(x)
+      s+=x
+      re+=x
+      a[0]+=x
+    s+=a[i]
+  # print(a)
+  print(re)
+  
+  
