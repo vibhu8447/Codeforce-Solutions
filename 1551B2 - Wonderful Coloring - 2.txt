@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
+#define MOD1 998244353
+#define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define PI 3.141592653589793238462
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double lld;
+const double pi=3.14159265358979323846;
+const int M = 1e6+1;
+vector<int>adj[M];
+bool gone[M];
+//ll arr[3][1002];
+//ll dp[100001][1001];
+//vector<ll>v1(10000,0);
+/*----------------------------------------------------------------------------------------------------------------*/
+/*void dfs(ll pos)
+{
+    gone[pos] = true;
+    min1 = min(min1,arr1[pos]);
+    for(auto e : adj[pos])
+    {
+
+        if(gone[e]==false)
+        {
+            dfs(e);
+        }
+    }
+}*/
+void solve()
+{
+    ll len,k;
+    cin>>len>>k;
+    ll arr[len];
+    unordered_map<int,int>m1;
+    for(ll i=0;i<len;i++)cin>>arr[i];
+    vector<pair<int,int>>v1;
+    for(ll i=0;i<len;i++)
+    {
+        v1.pb(mp(arr[i],i));
+    }
+    sort(v1.begin(),v1.end());
+    ll key = 1;
+    int ans[len];
+    for(ll i=0;i<len;i++)
+    {
+        m1[v1[i].first] += 1;
+        if(m1[v1[i].first]>k)
+        {
+            ans[v1[i].second] = 0;
+        }
+        else
+        {
+            ans[v1[i].second] = key;
+            key +=1;
+        }
+        if(key>k)key =1;
+    }
+    for(ll i=len-1;i>=0;i--)
+    {
+        if(ans[v1[i].second]==k)
+        {
+            break;
+        }
+        else
+        {
+            ans[v1[i].second] = 0;
+        }
+    }
+    for(ll i=0;i<len;i++)
+    {
+        cout<<ans[i]<<" ";
+    }
+    cout<<"\n";
+}
+int main()
+{
+    fastio();
+    ll freq =1;
+    cin>>freq;
+    while(freq--)
+    {
+        solve();
+    }
+}
