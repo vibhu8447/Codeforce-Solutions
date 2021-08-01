@@ -1,0 +1,10 @@
+n=int(input())
+m=0
+p=0
+for i in range(n):
+    a,b=map(int,input().split())
+    m=max(m,p+b-a)
+    p+=b-a
+m+=1
+m-=1
+print(m)

@@ -1,0 +1,21 @@
+t=int(input())
+while  t>0:
+    t-=1
+    # print("tyes")
+    n=int(input())
+    a=input()
+    b=input()
+    red=0
+    blue=0
+    while n>0:
+        n-=1
+        if a[n]>b[n]:
+            red+=1
+        elif b[n]>a[n]:
+            blue+=1
+    if red>blue:
+        print("RED")
+    elif red<blue:
+        print("BLUE")
+    else:
+        print("EQUAL")

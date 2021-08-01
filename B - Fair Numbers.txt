@@ -1,0 +1,74 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+#define endl '\n'
+#define MAX 200005
+#define pb push_back
+#define mk make_pair
+#define ll long long
+#define pii pair<int,int>
+#define miter multiset<int>::iterator
+ll M = 1000000007LL;
+int T[4*MAX];
+void update(int n,int b,int e, int p,int v)
+{
+    if(b==e && b == p)
+    {
+        T[n] = v;
+    }
+    else
+    {
+        int m = (b+e)/2;
+        if(p<= m) update(2*n,b,m,p,v);
+        else update(2*n+1,m+1,e,p,v);
+        T[n] = max(T[2*n], T[2*n+1]);
+    }
+}
+ 
+int query(int n, int b, int e, int l, int r)
+{
+    if(b==l && e== r )
+    {
+        return T[n];
+    }
+    else
+    {
+        int m = (b+e)/2;
+        if(r<= m) return query(2*n,b,m,l,r);
+        if(l > m) return query(2*n+1,m+1,e,l,r);
+        return min(query(2*n, b,m,l,m), query(2*n+1, m+1,e,m+1,r));
+    }
+}
+bool is (ll a)
+{
+	ll temp = a;
+	while(temp > 0)
+	{
+		ll current = temp%10LL;
+		if(current != 0 && a%current != 0) return false;
+		temp/=10LL;
+	}
+	return true;
+}
+int main() {
+ 
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int q;
+    cin >> q;
+    while(q--)
+    {
+    	ll n;
+    	cin >> n;
+    	for(int i =0; i< 100000; i++)
+    	{
+    		if(is(n))
+    		{
+    			cout << n << endl;
+    			break;
+    		}
+    		n++;
+    	}
+    }
+	return 0;
+}

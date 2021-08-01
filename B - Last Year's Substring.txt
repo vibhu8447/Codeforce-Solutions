@@ -1,0 +1,26 @@
+t=int(input())
+while t>0:
+    t-=1
+    n=int(input())
+    s=str(input())
+    
+    l=len(s)
+    if(l<4):
+        print("NO")
+    elif l== 4:
+        if s=="2020":
+            print("YES")
+        else:
+            print("NO")
+    else:
+        a=s[0:4]
+        b=s[l-4:]
+        c=s[0]+s[l-3:]
+        d=s[:3]+s[-1]
+        e=s[0]+s[1]+s[-2]+s[-1]
+        #print(a,b,c,d)
+        if(s=="2020" or a=="2020" or b=="2020" or c=="2020" or d=="2020" or e=="2020"):
+            print("YES")
+        else:
+            print("NO")
+    
